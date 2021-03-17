@@ -7,7 +7,7 @@ const StyledPopupMenu = styled.div`
     left: 0;
     z-index: 3;
     width: 100%;
-    min-height: 25vh;
+    min-height: 20vh;
     max-height: 65vh;
     padding: 20px;
     background: white;
@@ -17,7 +17,7 @@ const StyledPopupMenu = styled.div`
     text-align: left;
     padding-bottom: 50px;
     overflow: auto;
-    animation: mymove2 0.2s;
+    animation: slideUp 0.2s;
 
     .popup-title {
       margin-bottom: 20px;
@@ -53,6 +53,21 @@ const StyledPopupMenu = styled.div`
     }
   }
 
+  @media screen and (min-width: 1200px) {
+    .popup-menu {
+      width: 50vw;
+      bottom: 50%;
+      left: 50%;
+      border-radius: 15px;
+      transform: translate(-50%, 50%);
+      animation: fadeIn 0.1s;
+
+      .action-buttons {
+        position: absolute;
+      }
+    }
+  }
+
   .popup-blocker {
     position: fixed;
     top: 0;
@@ -63,12 +78,20 @@ const StyledPopupMenu = styled.div`
     z-index: 2;
   }
 
-  @keyframes mymove2 {
+  @keyframes slideUp {
     0% {
       bottom: -50px;
     }
     100% {
       bottom: 0px;
+    }
+  }
+  @keyframes fadeIn {
+    0% {
+      opacity: 0;
+    }
+    100% {
+      opacity: 1;
     }
   }
 `;

@@ -1,25 +1,56 @@
-import React from "react";
+import React, { useContext, useState } from "react";
+import classNames from "classnames";
 import propTypes from "prop-types";
 import StyledTask from "./task.style";
 import Card from "components/card";
 import Checkbox from "components/checkbox";
+import TrashIcon from "./trash.icon";
+import { AppContext } from "./../../context";
+import PopupMenu from "components/popupMenu";
+import Button from "components/button";
 
 const Task = ({ task }) => {
+  const { onTaskChange, onTaskRemove } = useContext(AppContext);
+  const [isDeleting, setDeleting] = useState(false);
+  const classes = { task: classNames("task", { done: task.done }), taskType: classNames("task-type", task.type) };
   return (
-    <Card className="task">
-      <StyledTask>
-        <div>
-          <span className={"task-type " + task.type} />
+    <StyledTask className={classes.task}>
+      <Card className="task-card">
+        <div className="task-content">
+          <span className={classes.taskType} />
           <span>{task.title}</span>
         </div>
-        <Checkbox />
-      </StyledTask>
-    </Card>
+        <div className="task-controls">
+          <button className="remove-btn" onClick={() => setDeleting(true)}>
+            <TrashIcon />
+          </button>
+          {isDeleting && (
+            <PopupMenu
+              title="Deleting Task"
+              actionButtons={
+                <>
+                  <Button onClick={() => setDeleting(false)}>Cancel</Button>
+                  <Button danger onClick={() => onTaskRemove(task.id)}>
+                    Delete
+                  </Button>
+                </>
+              }
+              onClose={() => setDeleting(false)}
+            >
+              You are about to delete a task, are you sure?
+            </PopupMenu>
+          )}
+          <Checkbox onChange={checked => onTaskChange(task.id, checked)} checked={task.done} />
+        </div>
+      </Card>
+    </StyledTask>
   );
 };
 
 Task.propTypes = {
-  task: propTypes.object
+  task: propTypes.object,
+  index: propTypes.number,
+  onCheck: propTypes.func
 };
 
 export default Task;

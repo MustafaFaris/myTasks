@@ -1,11 +1,13 @@
 import styled from "@emotion/styled";
 
 const StyledHeader = styled.div`
-  background: white;
+  position: relative;
+  background: #64dacf;
   padding: 20px;
   border-bottom-left-radius: 15px;
   border-bottom-right-radius: 15px;
   box-shadow: 0px 1px 2px rgba(0, 0, 0, 0.1);
+  z-index: 1;
 
   .user {
     position: relative;
@@ -25,9 +27,25 @@ const StyledHeader = styled.div`
   }
 
   .page-title {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
     margin-top: 10px;
-    font-weight: bold;
-    color: #30363f;
+    font-weight: 500;
+    color: white;
+    font-size: 20px;
+    user-select: none;
+
+    .toggle-done {
+      display: flex;
+      align-items: center;
+      font-size: 14px;
+      font-weight: normal;
+
+      .toggle {
+        margin-left: 5px;
+      }
+    }
   }
 `;
 

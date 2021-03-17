@@ -7,13 +7,9 @@ const TextInput = React.forwardRef(({ label, name = "input", required, error, ..
     <StyledTextInput className={`text-input ${error ? "has-error" : ""}`}>
       <label htmlFor={name}>
         {label}
-        {required && (
-          <span className="required" required={required}>
-            *
-          </span>
-        )}
+        {required && <span className="required">*</span>}
       </label>
-      <input type="text" name={name} autoComplete="off" ref={ref} {...props} />
+      <input type="text" name={name} autoComplete="off" ref={ref} required={required} {...props} />
     </StyledTextInput>
   );
 });

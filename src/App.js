@@ -1,31 +1,19 @@
-import React, { useState } from "react";
+import React, { useContext, useEffect } from "react";
+import { AppContext } from "./context";
 import "./styles.css";
 import Header from "components/header";
 import TasksView from "components/tasksView";
 import Footer from "components/footer";
 import styled from "@emotion/styled";
-
-const tasks = [
-  {
-    title: "Got to gym",
-    type: "task"
-  },
-  {
-    title: "Do the laundry",
-    type: "event"
-  },
-  {
-    title: "Potato Potato",
-    type: "task"
-  }
-];
+import { getTasks } from "./helpers";
 
 export default function App() {
-  const [tasksList, setTaskList] = useState(tasks);
+  const { setTaskList, tasksList, addNewTask } = useContext(AppContext);
 
-  const addNewTask = task => {
-    setTaskList([...tasksList, task]);
-  };
+  useEffect(async () => {
+    const tasks = getTasks();
+    setTaskList(tasks);
+  }, []);
 
   return (
     <AppStyle className="App">
@@ -44,9 +32,3 @@ const AppStyle = styled.div`
   height: 100%;
   width: 100%;
 `;
-
-// const Explore = () => {
-//   return (
-//     <span></span>
-//   )
-// };

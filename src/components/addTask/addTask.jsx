@@ -2,9 +2,9 @@ import React, { useState } from "react";
 import propTypes from "prop-types";
 import StyledAddTask from "./addTask.style";
 import AddMenu from "components/addMenu";
-import CreateTask from "components/createTask";
+import CreateTaskMenu from "components/createTaskMenu";
 
-const AddTask = ({ addNewTask }) => {
+const AddTask = () => {
   const [isClicked, setClicked] = useState(false);
   const [creating, setCreating] = useState(null);
 
@@ -14,7 +14,7 @@ const AddTask = ({ addNewTask }) => {
         <span>+</span>
       </button>
       {isClicked && <AddMenu setClicked={setClicked} setCreating={setCreating} />}
-      {creating && <CreateTask creating={creating} setCreating={setCreating} addNewTask={addNewTask} />}
+      {creating && <CreateTaskMenu creating={creating} setCreating={setCreating} />}
     </StyledAddTask>
   );
 };

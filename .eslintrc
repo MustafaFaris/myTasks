@@ -21,7 +21,7 @@
   "plugins": ["react", "prettier"],
   "rules": {
     "prettier/prettier": [
-      "error",
+      "warn",
       {
         "printWidth": 120,
         "useTabs": false
@@ -32,7 +32,7 @@
     "semi": ["warn", "always"],
     "no-set-state": "off",
     "no-unused-vars": [
-      "error",
+      "warn",
       {
         "ignoreRestSiblings": true
       }
@@ -44,7 +44,7 @@
     "react/jsx-no-duplicate-props": ["off"],
     "optionalChaining": 0,
     "no-debugger": "warn",
-    "react/prop-types": [2, { "ignore": ["context", "children", "className"] }],
+    "react/prop-types": [1, { "ignore": ["context", "children", "className"] }],
     "react/display-name": 0
   },
   "settings": {

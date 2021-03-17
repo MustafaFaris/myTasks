@@ -11,17 +11,22 @@ const StyledCheckbox = styled.span`
   cursor: pointer;
   -webkit-tap-highlight-color: transparent;
 
+  svg {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    color: transparent;
+    transform: translate(-50%, -50%) rotate(45deg);
+    transition: ease 0.2s;
+  }
+
   &.checked {
     border-color: #64dacf;
-    &:after {
-      content: "✓";
-      position: absolute;
-      top: 50%;
-      left: 50%;
-      transform: translate(-50%, -50%);
+
+    svg {
       color: #64dacf;
-      font-size: 16px;
-      font-weight: bold;
+      transform: translate(-50%, -50%) rotate(0deg);
     }
   }
 `;

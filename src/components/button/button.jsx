@@ -1,12 +1,19 @@
 import React from "react";
+import propTypes from "prop-types";
+import classNames from "classnames";
 import StyledButton from "./button.style";
 
-const Button = ({ children, ...props }) => {
+const Button = ({ children, danger, ...props }) => {
+  const classes = classNames("button", { danger: danger });
   return (
-    <StyledButton {...props} type="button">
+    <StyledButton className={classes} {...props} type="button">
       {children}
     </StyledButton>
   );
 };
 
 export default Button;
+
+Button.propTypes = {
+  danger: propTypes.bool
+};

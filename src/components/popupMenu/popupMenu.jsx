@@ -10,7 +10,7 @@ const PopupMenu = ({ title, children, actionButtons, onClose }) => {
         {children}
         <div className="action-buttons">{actionButtons}</div>
       </div>
-      <div className="popup-blocker" onClick={() => onClose()} />
+      <div className="popup-blocker" onClick={onClose} />
     </StyledPopupMenu>
   );
 };

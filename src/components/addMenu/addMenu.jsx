@@ -12,7 +12,7 @@ const AddMenu = ({ setClicked, setCreating }) => {
             setCreating("task");
           }}
         >
-          Add Task
+          Add a new Task
         </li>
         <li
           onClick={() => {
@@ -20,7 +20,7 @@ const AddMenu = ({ setClicked, setCreating }) => {
             setCreating("event");
           }}
         >
-          Add Event
+          Add a new Event
         </li>
       </ul>
       <div className="add-menu-blocker" onClick={() => setClicked(false)} />

@@ -17,6 +17,10 @@ const StyledButton = styled.button`
   &:active {
     background: #f5f5f5;
   }
+
+  &.danger {
+    color: #ec407a;
+  }
 `;
 
 export default StyledButton;
