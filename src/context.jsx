@@ -1,4 +1,5 @@
-import React, { useState } from "react";
+import React, { useReducer, useState } from "react";
+import { setLocalStorage } from "./helpers";
 
 export const AppContext = React.createContext();
 
@@ -7,40 +8,43 @@ const getDefaultDoneTask = () => {
   return local?.showDoneTasks !== undefined ? local.showDoneTasks : true;
 };
 
+const TasksReducer = (tasksList, action) => {
+  switch (action.type) {
+    case "set": {
+      return action.tasks;
+    }
+    case "add": {
+      const newTasks = [action.task, ...tasksList];
+      setLocalStorage("tasks", newTasks);
+      return newTasks;
+    }
+    case "remove": {
+      const newTasks = tasksList.filter(task => task.id !== action.taskID);
+      setLocalStorage("tasks", newTasks);
+      return newTasks;
+    }
+    case "check": {
+      const tasksClone = tasksList.slice();
+      tasksClone.find(task => task.id === action.taskID).done = action.isChecked;
+      setLocalStorage("tasks", tasksClone);
+      return tasksClone;
+    }
+    default:
+      return tasksList;
+  }
+};
+
 const ContextProvider = ({ children }) => {
-  const [tasksList, setTaskList] = useState([]);
+  const [tasksList, updateTasksList] = useReducer(TasksReducer, []);
   const [showDoneTasks, setDoneTasks] = useState(getDefaultDoneTask());
 
-  const updateTaskList = newTasks => {
-    localStorage.setItem("tasks", JSON.stringify(newTasks));
-    setTaskList(newTasks);
-  };
-
-  const setDoneTasksVisibility = checked => {
-    setDoneTasks(checked);
-    localStorage.setItem("showDoneTasks", JSON.stringify({ showDoneTasks: checked }));
-  };
-
-  const addNewTask = task => {
-    const tasks = [task, ...tasksList];
-    updateTaskList(tasks);
-  };
-
-  const onTaskRemove = taskID => {
-    const tasks = tasksList.filter(task => task.id !== taskID);
-    updateTaskList(tasks);
-  };
-
-  const onTaskChange = (taskID, checked) => {
-    const tasksClone = tasksList.slice();
-    tasksClone.find(task => task.id === taskID).done = checked;
-    updateTaskList(tasksClone);
+  const setDoneTasksVisibility = isChecked => {
+    setDoneTasks(isChecked);
+    setLocalStorage("showDoneTasks", { showDoneTasks: isChecked });
   };
 
   return (
-    <AppContext.Provider
-      value={{ tasksList, showDoneTasks, setDoneTasksVisibility, addNewTask, onTaskRemove, setTaskList, onTaskChange }}
-    >
+    <AppContext.Provider value={{ tasksList, updateTasksList, showDoneTasks, setDoneTasksVisibility }}>
       {children}
     </AppContext.Provider>
   );

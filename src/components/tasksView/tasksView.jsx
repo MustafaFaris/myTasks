@@ -1,11 +1,10 @@
 import React, { useContext } from "react";
 import { AppContext } from "./../../context";
-import propTypes from "prop-types";
 import StyledTasksView from "./tasksView.style";
 import Task from "components/task";
 
-const TasksView = ({ tasksList = [] }) => {
-  const { showDoneTasks } = useContext(AppContext);
+const TasksView = () => {
+  const { tasksList, showDoneTasks } = useContext(AppContext);
   return (
     <StyledTasksView>
       {tasksList.length ? (
@@ -15,10 +14,6 @@ const TasksView = ({ tasksList = [] }) => {
       )}
     </StyledTasksView>
   );
-};
-
-TasksView.propTypes = {
-  tasksList: propTypes.array
 };
 
 export default TasksView;

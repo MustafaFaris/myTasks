@@ -8,7 +8,7 @@ import StyledCreateTaskMenu from "./createTaskMenu.style";
 import { getRandomID } from "./../../helpers";
 
 const CreateTask = ({ creating, setCreating }) => {
-  const { addNewTask } = useContext(AppContext);
+  const { updateTasksList } = useContext(AppContext);
   const [taskTitle, setTaskTitle] = useState("");
   const [error, setError] = useState(null);
   const taskTitleRef = useRef(null);
@@ -21,7 +21,7 @@ const CreateTask = ({ creating, setCreating }) => {
 
   const handleCreate = () => {
     if (taskTitle) {
-      addNewTask({ id: getRandomID(), title: taskTitle, type: creating });
+      updateTasksList({ type: "add", task: { id: getRandomID(), title: taskTitle, type: creating } });
       setCreating(null);
     } else {
       setError(`Please include ${creating} title!`);
@@ -62,8 +62,7 @@ const CreateTask = ({ creating, setCreating }) => {
 
 CreateTask.propTypes = {
   creating: propTypes.string,
-  setCreating: propTypes.func,
-  addNewTask: propTypes.func
+  setCreating: propTypes.func
 };
 
 export default CreateTask;

@@ -8,18 +8,18 @@ import styled from "@emotion/styled";
 import { getTasks } from "./helpers";
 
 export default function App() {
-  const { setTaskList, tasksList, addNewTask } = useContext(AppContext);
+  const { updateTasksList } = useContext(AppContext);
 
   useEffect(async () => {
     const tasks = getTasks();
-    setTaskList(tasks);
+    updateTasksList({ type: "set", tasks });
   }, []);
 
   return (
     <AppStyle className="App">
       <Header />
-      <TasksView tasksList={tasksList} />
-      <Footer addNewTask={addNewTask} />
+      <TasksView />
+      <Footer />
     </AppStyle>
   );
 }

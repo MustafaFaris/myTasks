@@ -10,7 +10,7 @@ import PopupMenu from "components/popupMenu";
 import Button from "components/button";
 
 const Task = ({ task }) => {
-  const { onTaskChange, onTaskRemove } = useContext(AppContext);
+  const { updateTasksList } = useContext(AppContext);
   const [isDeleting, setDeleting] = useState(false);
   const classes = { task: classNames("task", { done: task.done }), taskType: classNames("task-type", task.type) };
   return (
@@ -30,7 +30,7 @@ const Task = ({ task }) => {
               actionButtons={
                 <>
                   <Button onClick={() => setDeleting(false)}>Cancel</Button>
-                  <Button danger onClick={() => onTaskRemove(task.id)}>
+                  <Button danger onClick={() => updateTasksList({ type: "remove", taskID: task.id })}>
                     Delete
                   </Button>
                 </>
@@ -40,7 +40,10 @@ const Task = ({ task }) => {
               You are about to delete a task, are you sure?
             </PopupMenu>
           )}
-          <Checkbox onChange={checked => onTaskChange(task.id, checked)} checked={task.done} />
+          <Checkbox
+            onChange={isChecked => updateTasksList({ type: "check", taskID: task.id, isChecked })}
+            checked={task.done}
+          />
         </div>
       </Card>
     </StyledTask>
