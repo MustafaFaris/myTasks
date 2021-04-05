@@ -1,17 +1,21 @@
-import React, { useState, useRef, useEffect, useContext } from "react";
+import React, { FC, useState, useRef, useEffect, useContext } from "react";
 import { AppContext } from "./../../context";
-import propTypes from "prop-types";
 import PopupMenu from "components/popupMenu";
 import Button from "components/button";
 import TextInput from "components/textInput";
 import StyledCreateTaskMenu from "./createTaskMenu.style";
 import { getRandomID } from "./../../helpers";
 
-const CreateTask = ({ creating, setCreating }) => {
+interface Props {
+  creating: string;
+  setCreating: (creating: string | null) => void;
+}
+
+const CreateTask: FC<Props> = ({ creating, setCreating }) => {
   const { updateTasksList } = useContext(AppContext);
   const [taskTitle, setTaskTitle] = useState("");
-  const [error, setError] = useState(null);
-  const taskTitleRef = useRef(null);
+  const [error, setError] = useState<string | null>(null);
+  const taskTitleRef = useRef<HTMLInputElement>(null);
 
   useEffect(() => {
     setTimeout(() => {
@@ -33,18 +37,18 @@ const CreateTask = ({ creating, setCreating }) => {
       <form onSubmit={handleCreate}>
         <PopupMenu
           title={`Create a new ${creating}`}
-          onClose={() => setCreating(null)}
+          onClose={(): void => setCreating(null)}
           actionButtons={
             <>
-              <Button onClick={() => setCreating(null)}>Cancel</Button>
+              <Button onClick={(): void => setCreating(null)}>Cancel</Button>
               <Button onClick={handleCreate}>Create</Button>
             </>
           }
         >
           <TextInput
-            onChange={({ target }) => {
+            onChange={(e: React.FormEvent<HTMLInputElement>): void => {
               setError(null);
-              setTaskTitle(target.value);
+              setTaskTitle(e.currentTarget.value);
             }}
             required
             placeholder="e.g. Go to gym"
@@ -58,11 +62,6 @@ const CreateTask = ({ creating, setCreating }) => {
       </form>
     </StyledCreateTaskMenu>
   );
-};
-
-CreateTask.propTypes = {
-  creating: propTypes.string,
-  setCreating: propTypes.func
 };
 
 export default CreateTask;

@@ -1,23 +1,24 @@
-import React, { useState } from "react";
+import React, { FC, useState } from "react";
 import classNames from "classnames";
-import propTypes from "prop-types";
 import StyledToggle from "./toggle.style";
 
-const Toggle = ({ toggled, defaultChecked, onChange = () => {} }) => {
+interface Props {
+  toggled?: boolean;
+  defaultChecked?: boolean;
+  onChange: (isToggled: boolean) => void;
+}
+
+const Toggle: FC<Props> = ({ toggled, defaultChecked, onChange }) => {
   const [isToggled, setToggled] = useState(toggled || defaultChecked);
   const onToggleChange = () => {
     setToggled(!isToggled);
-    onChange(!isToggled);
+    if (onChange) {
+      onChange(!isToggled);
+    }
   };
   const classes = classNames("toggle", { toggled: isToggled });
 
   return <StyledToggle className={classes} onClick={() => onToggleChange()} />;
-};
-
-Toggle.propTypes = {
-  defaultChecked: propTypes.bool,
-  toggled: propTypes.bool,
-  onChange: propTypes.func
 };
 
 export default Toggle;

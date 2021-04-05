@@ -1,6 +1,6 @@
-import React from "react";
+import React, { FC } from "react";
 
-function CheckIcon() {
+const CheckIcon: FC = () => {
   return (
     <svg
       aria-hidden="true"
@@ -18,6 +18,6 @@ function CheckIcon() {
       />
     </svg>
   );
-}
+};
 
 export default CheckIcon;

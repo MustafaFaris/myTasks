@@ -1,14 +1,20 @@
 import React, { useReducer, useState } from "react";
-import { setLocalStorage } from "./helpers";
+import { setLocalStorage, getLocalStorage } from "./helpers";
 
-export const AppContext = React.createContext();
+export const AppContext = React.createContext<any>({});
 
-const getDefaultDoneTask = () => {
-  const local = JSON.parse(localStorage.getItem("showDoneTasks"));
+type Actions =
+  | { type: "set"; tasks: Task[] }
+  | { type: "add"; task: Task }
+  | { type: "remove"; taskID: number }
+  | { type: "check"; taskID: number; isChecked: boolean };
+
+const getDefaultDoneTask = (): boolean => {
+  const local: { showDoneTasks: boolean } = getLocalStorage("showDoneTasks");
   return local?.showDoneTasks !== undefined ? local.showDoneTasks : true;
 };
 
-const TasksReducer = (tasksList, action) => {
+const TasksReducer = (tasksList: Task[], action: Actions) => {
   switch (action.type) {
     case "set": {
       return action.tasks;
@@ -19,13 +25,13 @@ const TasksReducer = (tasksList, action) => {
       return newTasks;
     }
     case "remove": {
-      const newTasks = tasksList.filter(task => task.id !== action.taskID);
+      const newTasks = tasksList.filter((task: Task) => task.id !== action.taskID);
       setLocalStorage("tasks", newTasks);
       return newTasks;
     }
     case "check": {
-      const tasksClone = tasksList.slice();
-      tasksClone.find(task => task.id === action.taskID).done = action.isChecked;
+      const tasksClone: Tasks = tasksList.slice();
+      tasksClone.find((task) => task.id === action.taskID).done = action.isChecked;
       setLocalStorage("tasks", tasksClone);
       return tasksClone;
     }
@@ -34,11 +40,11 @@ const TasksReducer = (tasksList, action) => {
   }
 };
 
-const ContextProvider = ({ children }) => {
+const ContextProvider: React.FC = ({ children }) => {
   const [tasksList, updateTasksList] = useReducer(TasksReducer, []);
-  const [showDoneTasks, setDoneTasks] = useState(getDefaultDoneTask());
+  const [showDoneTasks, setDoneTasks] = useState<boolean>(getDefaultDoneTask());
 
-  const setDoneTasksVisibility = isChecked => {
+  const setDoneTasksVisibility = (isChecked: boolean): void => {
     setDoneTasks(isChecked);
     setLocalStorage("showDoneTasks", { showDoneTasks: isChecked });
   };

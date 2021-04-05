@@ -1,6 +1,6 @@
-import React from "react";
+import React, { FC } from "react";
 
-function TrashIcon() {
+const TrashIcon: FC = () => {
   return (
     <svg
       aria-hidden="true"
@@ -18,6 +18,6 @@ function TrashIcon() {
       />
     </svg>
   );
-}
+};
 
 export default TrashIcon;

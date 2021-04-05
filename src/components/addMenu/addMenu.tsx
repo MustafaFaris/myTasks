@@ -1,8 +1,12 @@
-import React from "react";
-import propTypes from "prop-types";
+import React, { FC } from "react";
 import StyledAddMenu from "./addMenu.style";
 
-const AddMenu = ({ setClicked, setCreating }) => {
+interface Props {
+  setClicked: (isClicked: boolean) => void;
+  setCreating: (creating: "task" | "event") => void;
+}
+
+const AddMenu: FC<Props> = ({ setClicked, setCreating }) => {
   return (
     <StyledAddMenu>
       <ul>
@@ -26,11 +30,6 @@ const AddMenu = ({ setClicked, setCreating }) => {
       <div className="add-menu-blocker" onClick={() => setClicked(false)} />
     </StyledAddMenu>
   );
-};
-
-AddMenu.propTypes = {
-  setClicked: propTypes.func,
-  setCreating: propTypes.func
 };
 
 export default AddMenu;

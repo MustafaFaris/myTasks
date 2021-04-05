@@ -6,45 +6,36 @@
   "extends": [
     "eslint:recommended",
     "plugin:react/recommended",
+    "plugin:@typescript-eslint/recommended",
+    "prettier/@typescript-eslint",
     "plugin:prettier/recommended"
   ],
-  "parser": "babel-eslint",
+  "parser": "@typescript-eslint/parser",
   "parserOptions": {
-    "ecmaVersion": 6,
+    "project": "./tsconfig.json",
+    "ecmaVersion": 2020,
+    "sourceType": "module",
     "ecmaFeatures": {
-      "experimentalObjectRestSpread": true,
-      "jsx": true,
-      "modules": true
-    },
-    "sourceType": "module"
+      "jsx": true
+    }
   },
   "plugins": ["react", "prettier"],
   "rules": {
+    "@typescript-eslint/no-explicit-any": "off",
     "prettier/prettier": [
       "warn",
       {
         "printWidth": 120,
         "useTabs": false
       }
-    ],
+    ],  
     "indent": ["off", "tab"],
     "linebreak-style": ["off"],
     "semi": ["warn", "always"],
     "no-set-state": "off",
-    "no-unused-vars": [
-      "warn",
-      {
-        "ignoreRestSiblings": true
-      }
-    ],
     "no-console": ["off"],
-    "react/jsx-uses-react": 2,
-    "react/jsx-uses-vars": 2,
-    "react/react-in-jsx-scope": 2,
-    "react/jsx-no-duplicate-props": ["off"],
-    "optionalChaining": 0,
     "no-debugger": "warn",
-    "react/prop-types": [1, { "ignore": ["context", "children", "className"] }],
+    "react/prop-types": [0],
     "react/display-name": 0
   },
   "settings": {

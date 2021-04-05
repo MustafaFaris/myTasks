@@ -1,14 +1,14 @@
-import React, { useState } from "react";
+import React, { FC, useState } from "react";
 import classNames from "classnames";
 import StyledAddTask from "./addTask.style";
 import AddMenu from "components/addMenu";
 import CreateTaskMenu from "components/createTaskMenu";
 
-const AddTask = () => {
-  const [isClicked, setClicked] = useState(false);
-  const [creating, setCreating] = useState(null);
+const AddTask: FC = () => {
+  const [isClicked, setClicked] = useState<boolean>(false);
+  const [creating, setCreating] = useState<string | null>(null);
 
-  const classes = classNames("add-task-button", { isClicked });
+  const classes: string = classNames("add-task-button", { isClicked });
 
   return (
     <StyledAddTask>

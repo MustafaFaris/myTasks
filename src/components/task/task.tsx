@@ -1,6 +1,5 @@
-import React, { useContext, useState } from "react";
+import React, { FC, useContext, useState } from "react";
 import classNames from "classnames";
-import propTypes from "prop-types";
 import StyledTask from "./task.style";
 import Card from "components/card";
 import Checkbox from "components/checkbox";
@@ -9,10 +8,17 @@ import { AppContext } from "./../../context";
 import PopupMenu from "components/popupMenu";
 import Button from "components/button";
 
-const Task = ({ task }) => {
+interface Props {
+  task: Task;
+}
+
+const Task: FC<Props> = ({ task }) => {
   const { updateTasksList } = useContext(AppContext);
-  const [isDeleting, setDeleting] = useState(false);
-  const classes = { task: classNames("task", { done: task.done }), taskType: classNames("task-type", task.type) };
+  const [isDeleting, setDeleting] = useState<boolean>(false);
+  const classes: { task: string; taskType: string } = {
+    task: classNames("task", { done: task.done }),
+    taskType: classNames("task-type", task.type),
+  };
   return (
     <StyledTask className={classes.task}>
       <Card className="task-card">
@@ -41,19 +47,13 @@ const Task = ({ task }) => {
             </PopupMenu>
           )}
           <Checkbox
-            onChange={isChecked => updateTasksList({ type: "check", taskID: task.id, isChecked })}
+            onChange={(isChecked) => updateTasksList({ type: "check", taskID: task.id, isChecked })}
             checked={task.done}
           />
         </div>
       </Card>
     </StyledTask>
   );
-};
-
-Task.propTypes = {
-  task: propTypes.object,
-  index: propTypes.number,
-  onCheck: propTypes.func
 };
 
 export default Task;

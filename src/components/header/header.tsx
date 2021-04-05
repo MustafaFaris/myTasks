@@ -1,9 +1,9 @@
-import React, { useContext } from "react";
+import React, { FC, useContext } from "react";
 import { AppContext } from "./../../context";
 import StyledHeader from "./header.style";
 import Toggle from "components/toggle";
 
-const Header = () => {
+const Header: FC = () => {
   const { showDoneTasks, setDoneTasksVisibility } = useContext(AppContext);
 
   return (

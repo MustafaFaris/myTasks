@@ -1,8 +1,13 @@
-import React from "react";
-import propTypes from "prop-types";
+import React, { FC, ReactElement } from "react";
 import StyledPopupMenu from "./popupMenu.style";
 
-const PopupMenu = ({ title, children, actionButtons, onClose }) => {
+interface Props {
+  title: string;
+  actionButtons: ReactElement;
+  onClose: () => void;
+}
+
+const PopupMenu: FC<Props> = ({ title, actionButtons, onClose, children }) => {
   return (
     <StyledPopupMenu>
       <div className="popup-menu">
@@ -13,13 +18,6 @@ const PopupMenu = ({ title, children, actionButtons, onClose }) => {
       <div className="popup-blocker" onClick={onClose} />
     </StyledPopupMenu>
   );
-};
-
-PopupMenu.propTypes = {
-  title: propTypes.string,
-  actionButtons: propTypes.any,
-  onClose: propTypes.func,
-  children: propTypes.any
 };
 
 export default PopupMenu;

@@ -1,14 +1,19 @@
-import React, { useState } from "react";
+import React, { FC, useState } from "react";
 import classNames from "classnames";
-import propTypes from "prop-types";
 import StyledCheckbox from "./checkbox.style";
 import CheckIcon from "./check.icon";
 
-const Checkbox = ({ checked, defaultChecked, onChange = () => {} }) => {
-  const [isChecked, setChecked] = useState(checked || defaultChecked);
+interface Props {
+  checked?: boolean;
+  defaultChecked?: boolean;
+  onChange: (isChecked: boolean) => void;
+}
+
+const Checkbox: FC<Props> = ({ checked, defaultChecked, onChange }) => {
+  const [isChecked, setChecked] = useState<boolean>(checked || defaultChecked || false);
   const onCheckChange = () => {
     setChecked(!isChecked);
-    onChange(!isChecked);
+    if (onChange) onChange(!isChecked);
   };
   const classes = classNames("checkbox", { checked: checked || isChecked });
 
@@ -17,12 +22,6 @@ const Checkbox = ({ checked, defaultChecked, onChange = () => {} }) => {
       <CheckIcon />
     </StyledCheckbox>
   );
-};
-
-Checkbox.propTypes = {
-  defaultChecked: propTypes.bool,
-  checked: propTypes.bool,
-  onChange: propTypes.func
 };
 
 export default Checkbox;

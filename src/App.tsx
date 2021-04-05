@@ -1,4 +1,4 @@
-import React, { useContext, useEffect } from "react";
+import React, { FC, useContext, useEffect } from "react";
 import { AppContext } from "./context";
 import "./styles.css";
 import Header from "components/header";
@@ -7,10 +7,10 @@ import Footer from "components/footer";
 import styled from "@emotion/styled";
 import { getTasks } from "./helpers";
 
-export default function App() {
+const App: FC = () => {
   const { updateTasksList } = useContext(AppContext);
 
-  useEffect(async () => {
+  useEffect(() => {
     const tasks = getTasks();
     updateTasksList({ type: "set", tasks });
   }, []);
@@ -22,7 +22,7 @@ export default function App() {
       <Footer />
     </AppStyle>
   );
-}
+};
 
 const AppStyle = styled.div`
   position: relative;
@@ -32,3 +32,5 @@ const AppStyle = styled.div`
   height: 100%;
   width: 100%;
 `;
+
+export default App;
