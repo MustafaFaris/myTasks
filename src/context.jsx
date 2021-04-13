@@ -19,13 +19,13 @@ const TasksReducer = (tasksList, action) => {
       return newTasks;
     }
     case "remove": {
-      const newTasks = tasksList.filter(task => task.id !== action.taskID);
+      const newTasks = tasksList.filter((task) => task.id !== action.taskID);
       setLocalStorage("tasks", newTasks);
       return newTasks;
     }
     case "check": {
       const tasksClone = tasksList.slice();
-      tasksClone.find(task => task.id === action.taskID).done = action.isChecked;
+      tasksClone.find((task) => task.id === action.taskID).done = action.isChecked;
       setLocalStorage("tasks", tasksClone);
       return tasksClone;
     }
@@ -38,7 +38,7 @@ const ContextProvider = ({ children }) => {
   const [tasksList, updateTasksList] = useReducer(TasksReducer, []);
   const [showDoneTasks, setDoneTasks] = useState(getDefaultDoneTask());
 
-  const setDoneTasksVisibility = isChecked => {
+  const setDoneTasksVisibility = (isChecked) => {
     setDoneTasks(isChecked);
     setLocalStorage("showDoneTasks", { showDoneTasks: isChecked });
   };

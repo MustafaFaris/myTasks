@@ -19,7 +19,7 @@ PopupMenu.propTypes = {
   title: propTypes.string,
   actionButtons: propTypes.any,
   onClose: propTypes.func,
-  children: propTypes.any
+  children: propTypes.any,
 };
 
 export default PopupMenu;

@@ -14,7 +14,7 @@ const Header = () => {
       <div className="page-title">
         My Tasks
         <span className="toggle-done">
-          Show done tasks <Toggle onChange={setDoneTasksVisibility} defaultChecked={showDoneTasks} />
+          Show done tasks <Toggle onChange={setDoneTasksVisibility} toggled={showDoneTasks} />
         </span>
       </div>
     </StyledHeader>

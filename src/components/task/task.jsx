@@ -41,7 +41,7 @@ const Task = ({ task }) => {
             </PopupMenu>
           )}
           <Checkbox
-            onChange={isChecked => updateTasksList({ type: "check", taskID: task.id, isChecked })}
+            onChange={(isChecked) => updateTasksList({ type: "check", taskID: task.id, isChecked })}
             checked={task.done}
           />
         </div>
@@ -53,7 +53,7 @@ const Task = ({ task }) => {
 Task.propTypes = {
   task: propTypes.object,
   index: propTypes.number,
-  onCheck: propTypes.func
+  onCheck: propTypes.func,
 };
 
 export default Task;

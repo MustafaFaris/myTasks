@@ -8,7 +8,9 @@ const TasksView = () => {
   return (
     <StyledTasksView>
       {tasksList.length ? (
-        tasksList.filter(task => !task.done || showDoneTasks).map(task => <Task key={"task-" + task.id} task={task} />)
+        tasksList
+          .filter((task) => !task.done || showDoneTasks)
+          .map((task) => <Task key={"task-" + task.id} task={task} />)
       ) : (
         <p className="no-tasks">You don&apos;t have any tasks</p>
       )}

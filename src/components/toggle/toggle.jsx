@@ -4,12 +4,12 @@ import propTypes from "prop-types";
 import StyledToggle from "./toggle.style";
 
 const Toggle = ({ toggled, defaultChecked, onChange = () => {} }) => {
-  const [isToggled, setToggled] = useState(toggled || defaultChecked);
+  const [isToggled, setToggled] = useState(toggled || defaultChecked || false);
   const onToggleChange = () => {
-    setToggled(!isToggled);
-    onChange(!isToggled);
+    setToggled(toggled !== undefined ? !toggled : !isToggled);
+    onChange(toggled !== undefined ? !toggled : !isToggled);
   };
-  const classes = classNames("toggle", { toggled: isToggled });
+  const classes = classNames("toggle", { toggled: toggled !== undefined ? toggled : isToggled });
 
   return <StyledToggle className={classes} onClick={() => onToggleChange()} />;
 };
@@ -17,7 +17,7 @@ const Toggle = ({ toggled, defaultChecked, onChange = () => {} }) => {
 Toggle.propTypes = {
   defaultChecked: propTypes.bool,
   toggled: propTypes.bool,
-  onChange: propTypes.func
+  onChange: propTypes.func,
 };
 
 export default Toggle;

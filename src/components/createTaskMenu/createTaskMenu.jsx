@@ -62,7 +62,7 @@ const CreateTask = ({ creating, setCreating }) => {
 
 CreateTask.propTypes = {
   creating: propTypes.string,
-  setCreating: propTypes.func
+  setCreating: propTypes.func,
 };
 
 export default CreateTask;

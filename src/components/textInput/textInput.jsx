@@ -18,7 +18,7 @@ TextInput.propTypes = {
   label: propTypes.string,
   name: propTypes.string,
   required: propTypes.bool,
-  error: propTypes.bool
+  error: propTypes.bool,
 };
 
 export default TextInput;

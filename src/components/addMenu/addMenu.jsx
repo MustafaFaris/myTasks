@@ -30,7 +30,7 @@ const AddMenu = ({ setClicked, setCreating }) => {
 
 AddMenu.propTypes = {
   setClicked: propTypes.func,
-  setCreating: propTypes.func
+  setCreating: propTypes.func,
 };
 
 export default AddMenu;

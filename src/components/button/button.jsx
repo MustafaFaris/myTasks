@@ -15,5 +15,5 @@ const Button = ({ children, danger, ...props }) => {
 export default Button;
 
 Button.propTypes = {
-  danger: propTypes.bool
+  danger: propTypes.bool,
 };

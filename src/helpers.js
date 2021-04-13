@@ -3,19 +3,19 @@ export const getTasks = () => {
     {
       id: getRandomID(),
       title: "Got to gym",
-      type: "task"
+      type: "task",
     },
     {
       id: getRandomID(),
       title: "Do the laundry",
-      type: "event"
+      type: "event",
     },
     {
       id: getRandomID(),
       title: "Potato Potato",
       type: "task",
-      done: true
-    }
+      done: true,
+    },
   ];
 
   const localTasks = JSON.parse(localStorage.getItem("tasks"));
