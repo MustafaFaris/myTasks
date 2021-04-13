@@ -1,10 +1,11 @@
-import React, { useContext } from "react";
-import { AppContext } from "./../../context";
+import React from "react";
+import useStore from "./../../store";
 import StyledHeader from "./header.style";
 import Toggle from "components/toggle";
 
 const Header = () => {
-  const { showDoneTasks, setDoneTasksVisibility } = useContext(AppContext);
+  const showDoneTasks = useStore((state) => state.showDoneTasks);
+  const setDoneTasksVisibility = useStore((state) => state.setDoneTasksVisibility);
 
   return (
     <StyledHeader>

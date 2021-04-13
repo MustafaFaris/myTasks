@@ -1,20 +1,11 @@
-import React, { useContext, useEffect } from "react";
-import { AppContext } from "./context";
+import React from "react";
 import "./styles.css";
 import Header from "components/header";
 import TasksView from "components/tasksView";
 import Footer from "components/footer";
 import styled from "@emotion/styled";
-import { getTasks } from "./helpers";
 
 export default function App() {
-  const { updateTasksList } = useContext(AppContext);
-
-  useEffect(async () => {
-    const tasks = getTasks();
-    updateTasksList({ type: "set", tasks });
-  }, []);
-
   return (
     <AppStyle className="App">
       <Header />

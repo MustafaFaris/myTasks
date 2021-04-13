@@ -1,5 +1,5 @@
-import React, { useState, useRef, useEffect, useContext } from "react";
-import { AppContext } from "./../../context";
+import React, { useState, useRef, useEffect } from "react";
+import useStore from "./../../store";
 import propTypes from "prop-types";
 import PopupMenu from "components/popupMenu";
 import Button from "components/button";
@@ -8,7 +8,7 @@ import StyledCreateTaskMenu from "./createTaskMenu.style";
 import { getRandomID } from "./../../helpers";
 
 const CreateTask = ({ creating, setCreating }) => {
-  const { updateTasksList } = useContext(AppContext);
+  const addTask = useStore((state) => state.addTask);
   const [taskTitle, setTaskTitle] = useState("");
   const [error, setError] = useState(null);
   const taskTitleRef = useRef(null);
@@ -21,7 +21,7 @@ const CreateTask = ({ creating, setCreating }) => {
 
   const handleCreate = () => {
     if (taskTitle) {
-      updateTasksList({ type: "add", task: { id: getRandomID(), title: taskTitle, type: creating } });
+      addTask({ id: getRandomID(), title: taskTitle, type: creating });
       setCreating(null);
     } else {
       setError(`Please include ${creating} title!`);

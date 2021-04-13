@@ -1,10 +1,12 @@
-import React, { useContext } from "react";
-import { AppContext } from "./../../context";
+import React from "react";
+import useStore from "./../../store";
 import StyledTasksView from "./tasksView.style";
 import Task from "components/task";
 
 const TasksView = () => {
-  const { tasksList, showDoneTasks } = useContext(AppContext);
+  const tasksList = useStore((state) => state.tasksList);
+  const showDoneTasks = useStore((state) => state.showDoneTasks);
+
   return (
     <StyledTasksView className="tasks-view">
       {tasksList.length ? (
