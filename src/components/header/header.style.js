@@ -1,7 +1,9 @@
 import styled from "@emotion/styled";
 
 const StyledHeader = styled.div`
-  position: relative;
+  position: fixed;
+  top: 0;
+  width: 100%;
   background: #64dacf;
   padding: 20px;
   border-bottom-left-radius: 15px;
