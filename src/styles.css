@@ -7,6 +7,10 @@ body,
   overscroll-behavior: none;
 }
 
+#root {
+  padding-top: 108px;
+}
+
 * {
   box-sizing: border-box;
 }

@@ -26,7 +26,8 @@
       "warn",
       {
         "printWidth": 120,
-        "useTabs": false
+        "useTabs": false,
+        "endOfLine":"auto" //Needed because Windows uses "CRLF" End of line sequence by default. 
       }
     ],  
     "indent": ["off", "tab"],
