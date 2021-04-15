@@ -1,5 +1,5 @@
-import React, { useContext, useEffect } from "react";
-import { AppContext } from "./context";
+import React, { useEffect } from "react";
+import { useDispatch } from "react-redux";
 import "./styles.css";
 import Header from "components/header";
 import TasksView from "components/tasksView";
@@ -8,11 +8,11 @@ import styled from "@emotion/styled";
 import { getTasks } from "./helpers";
 
 export default function App() {
-  const { updateTasksList } = useContext(AppContext);
+  const dispatch = useDispatch();
 
   useEffect(async () => {
     const tasks = getTasks();
-    updateTasksList({ type: "set", tasks });
+    dispatch({ type: "set", tasks });
   }, []);
 
   return (

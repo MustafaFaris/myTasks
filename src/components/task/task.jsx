@@ -1,16 +1,16 @@
-import React, { useContext, useState } from "react";
+import React, { useState } from "react";
 import classNames from "classnames";
 import propTypes from "prop-types";
 import StyledTask from "./task.style";
 import Card from "components/card";
 import Checkbox from "components/checkbox";
 import TrashIcon from "./trash.icon";
-import { AppContext } from "./../../context";
+import { useDispatch } from "react-redux";
 import PopupMenu from "components/popupMenu";
 import Button from "components/button";
 
 const Task = ({ task }) => {
-  const { updateTasksList } = useContext(AppContext);
+  const dispatch = useDispatch();
   const [isDeleting, setDeleting] = useState(false);
   const classes = { task: classNames("task", { done: task.done }), taskType: classNames("task-type", task.type) };
   return (
@@ -30,7 +30,7 @@ const Task = ({ task }) => {
               actionButtons={
                 <>
                   <Button onClick={() => setDeleting(false)}>Cancel</Button>
-                  <Button danger onClick={() => updateTasksList({ type: "remove", taskID: task.id })}>
+                  <Button danger onClick={() => dispatch({ type: "remove", taskID: task.id })}>
                     Delete
                   </Button>
                 </>
@@ -41,7 +41,7 @@ const Task = ({ task }) => {
             </PopupMenu>
           )}
           <Checkbox
-            onChange={(isChecked) => updateTasksList({ type: "check", taskID: task.id, isChecked })}
+            onChange={(isChecked) => dispatch({ type: "check", taskID: task.id, isChecked })}
             checked={task.done}
           />
         </div>

@@ -1,10 +1,11 @@
-import React, { useContext } from "react";
-import { AppContext } from "./../../context";
+import React from "react";
+import { useSelector, useDispatch } from "react-redux";
 import StyledHeader from "./header.style";
 import Toggle from "components/toggle";
 
 const Header = () => {
-  const { showDoneTasks, setDoneTasksVisibility } = useContext(AppContext);
+  const showDoneTasks = useSelector((state) => state.showDoneTasks);
+  const dispatch = useDispatch();
 
   return (
     <StyledHeader>
@@ -16,7 +17,11 @@ const Header = () => {
       <div className="page-title">
         My Tasks
         <span className="toggle-done">
-          Show done tasks <Toggle onChange={setDoneTasksVisibility} toggled={showDoneTasks} />
+          Show done tasks{" "}
+          <Toggle
+            onChange={(isToggled) => dispatch({ type: "setDoneTasksVisibility", isToggled })}
+            toggled={showDoneTasks}
+          />
         </span>
       </div>
     </StyledHeader>
