@@ -5,7 +5,7 @@ import { devtools, persist } from "zustand/middleware";
 const defaultTasks = [
   {
     id: getRandomID(),
-    title: "Got to gym",
+    title: "Go to gym",
     type: "task",
   },
   {
