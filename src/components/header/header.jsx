@@ -8,9 +8,11 @@ const Header = () => {
 
   return (
     <StyledHeader>
-      <span className="user">
-        <span>M</span>
-      </span>
+      <a href="https://github.com/MustafaFaris" target="_blank" rel="noreferrer">
+        <span className="user">
+          <span>M</span>
+        </span>
+      </a>
       <div className="page-title">
         My Tasks
         <span className="toggle-done">

@@ -26,7 +26,7 @@ const Task = ({ task }) => {
           </button>
           {isDeleting && (
             <PopupMenu
-              title="Deleting Task"
+              title={`Deleting ${task.type}`}
               actionButtons={
                 <>
                   <Button onClick={() => setDeleting(false)}>Cancel</Button>
@@ -37,7 +37,7 @@ const Task = ({ task }) => {
               }
               onClose={() => setDeleting(false)}
             >
-              You are about to delete a task, are you sure?
+              You are about to delete this {task.type}, are you sure?
             </PopupMenu>
           )}
           <Checkbox

@@ -4,7 +4,7 @@ import StyledAddMenu from "./addMenu.style";
 
 const AddMenu = ({ setClicked, setCreating }) => {
   return (
-    <StyledAddMenu>
+    <StyledAddMenu className="add-task-menu">
       <ul>
         <li
           onClick={() => {

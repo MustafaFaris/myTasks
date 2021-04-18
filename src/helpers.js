@@ -2,7 +2,7 @@ export const getTasks = () => {
   const defaultTasks = [
     {
       id: getRandomID(),
-      title: "Got to gym",
+      title: "Go to gym",
       type: "task",
     },
     {
