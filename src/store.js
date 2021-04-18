@@ -28,6 +28,7 @@ const TasksReducer = (state = { tasksList: [], showDoneTasks: getDefaultDoneTask
       return { ...state, tasksList: tasksClone };
     }
     case "setDoneTasksVisibility": {
+      setLocalStorage("showDoneTasks", { showDoneTasks: action.isToggled });
       return { ...state, showDoneTasks: action.isToggled };
     }
     default:
