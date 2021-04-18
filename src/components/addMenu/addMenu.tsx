@@ -8,7 +8,7 @@ interface Props {
 
 const AddMenu: FC<Props> = ({ setClicked, setCreating }) => {
   return (
-    <StyledAddMenu>
+    <StyledAddMenu className="add-task-menu">
       <ul>
         <li
           onClick={() => {

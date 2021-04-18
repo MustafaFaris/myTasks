@@ -6,7 +6,7 @@ import Task from "components/task";
 const TasksView: FC = () => {
   const { tasksList, showDoneTasks } = useContext(AppContext);
   return (
-    <StyledTasksView>
+    <StyledTasksView className="tasks-view">
       {tasksList.length ? (
         tasksList
           .filter((task: Task): Task[] => !task.done || showDoneTasks)

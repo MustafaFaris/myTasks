@@ -23,18 +23,18 @@ const StyledAddTask = styled.div`
     &.isClicked {
       background: #ec407a;
 
-      span {
+      svg {
         transform: translate(-50%, -50%) rotate(-45deg);
       }
     }
 
-    span {
+    svg {
       position: absolute;
       top: 50%;
       left: 50%;
       transition: 0.2s ease;
       transform: translate(-50%, -50%);
-      font-size: 30px;
+      font-size: 16px;
     }
   }
 `;

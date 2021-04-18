@@ -2,7 +2,7 @@ export const getTasks = (): Tasks => {
   const defaultTasks: any = [
     {
       id: getRandomID(),
-      title: "Got to gym",
+      title: "Go to gym",
       type: "task",
       done: false,
     },
@@ -31,5 +31,5 @@ export const setLocalStorage = (name: string, value: unknown): void => {
 };
 
 export const getLocalStorage = (name: string): any => {
-  return JSON.parse(localStorage.getItem(name) || "");
+  return JSON.parse(localStorage.getItem(name) || "null");
 };
