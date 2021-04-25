@@ -6,7 +6,12 @@ import StyledButton from "./button.style";
 const Button = ({ children, danger, ...props }) => {
   const classes = classNames("button", { danger: danger });
   return (
-    <StyledButton className={classes} {...props} type="button">
+    <StyledButton
+      className={classes}
+      aria-label={typeof children === "string" ? children : null}
+      {...props}
+      type="button"
+    >
       {children}
     </StyledButton>
   );

@@ -21,7 +21,7 @@ const Task = ({ task }) => {
           <span>{task.title}</span>
         </div>
         <div className="task-controls">
-          <button className="remove-btn" onClick={() => setDeleting(true)}>
+          <button aria-label="Remove Task" className="remove-btn" onClick={() => setDeleting(true)}>
             <TrashIcon />
           </button>
           {isDeleting && (

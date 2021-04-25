@@ -1,6 +1,6 @@
 import styled from "@emotion/styled";
 
-const StyledHeader = styled.div`
+const StyledHeader = styled.header`
   position: fixed;
   top: 0;
   width: 100%;

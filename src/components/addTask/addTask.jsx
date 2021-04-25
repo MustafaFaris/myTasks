@@ -13,7 +13,7 @@ const AddTask = () => {
 
   return (
     <StyledAddTask>
-      <button className={classes} onClick={() => setClicked(!isClicked)}>
+      <button aria-label="Add Task" className={classes} onClick={() => setClicked(!isClicked)}>
         <PlusIcon />
       </button>
       {isClicked && <AddMenu setClicked={setClicked} setCreating={setCreating} />}
