@@ -1,24 +1,15 @@
 {
+  "root": true,
   "env": {
     "browser": true,
-    "es6": true
+    "node": true
   },
-  "extends": [
-    "eslint:recommended",
-    "plugin:react/recommended",
-    "plugin:prettier/recommended"
-  ],
-  "parser": "babel-eslint",
+  "extends": ["plugin:vue/vue3-essential", "eslint:recommended", "@vue/prettier"],
   "parserOptions": {
-    "ecmaVersion": 6,
-    "ecmaFeatures": {
-      "experimentalObjectRestSpread": true,
-      "jsx": true,
-      "modules": true
-    },
+    "parser": "babel-eslint",
     "sourceType": "module"
   },
-  "plugins": ["react", "prettier"],
+  "plugins": ["prettier"],
   "rules": {
     "prettier/prettier": [
       "warn",
@@ -39,18 +30,25 @@
       }
     ],
     "no-console": ["off"],
-    "react/jsx-uses-react": 2,
-    "react/jsx-uses-vars": 2,
-    "react/react-in-jsx-scope": 2,
-    "react/jsx-no-duplicate-props": ["off"],
     "optionalChaining": 0,
-    "no-debugger": "warn",
-    "react/prop-types": [1, { "ignore": ["context", "children", "className"] }],
-    "react/display-name": 0
+    "no-debugger": "warn"
   },
   "settings": {
     "react": {
       "version": "detect"
     }
-  }
+  },
+  "overrides": [
+    {
+      "files": [
+        "**/__tests__/*.{j,t}s?(x)",
+        "**/tests/unit/**/*.spec.{j,t}s?(x)",
+      ],
+      "env": {
+        "jest": true
+      }
+    }
+  ]
 }
+
+

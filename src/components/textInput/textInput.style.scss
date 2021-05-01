@@ -1,6 +1,4 @@
-import styled from "@emotion/styled";
-
-const StyledTextInput = styled.div`
+.text-input {
   margin-bottom: 10px;
 
   .required {
@@ -39,5 +37,4 @@ const StyledTextInput = styled.div`
       border-color: #60e2dd;
     }
   }
-`;
-export default StyledTextInput;
+}

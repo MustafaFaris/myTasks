@@ -1,6 +1,4 @@
-import styled from "@emotion/styled";
-
-const StyledAddMenu = styled.div`
+.add-task-menu {  
   ul {
     position: absolute;
     left: 50%;
@@ -60,6 +58,4 @@ const StyledAddMenu = styled.div`
       bottom: 60px;
     }
   }
-`;
-
-export default StyledAddMenu;
+}

@@ -1,6 +1,4 @@
-import styled from "@emotion/styled";
-
-const StyledTasksView = styled.div`
+.tasks-view {
   padding: 15px;
   max-width: 1140px;
   margin: auto;
@@ -14,6 +12,4 @@ const StyledTasksView = styled.div`
     text-align: center;
     color: #888;
   }
-`;
-
-export default StyledTasksView;
+}

@@ -1,6 +1,4 @@
-import styled from "@emotion/styled";
-
-const StyledHeader = styled.div`
+header {
   position: fixed;
   top: 0;
   width: 100%;
@@ -49,6 +47,4 @@ const StyledHeader = styled.div`
       }
     }
   }
-`;
-
-export default StyledHeader;
+}

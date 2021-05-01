@@ -1,6 +1,4 @@
-import styled from "@emotion/styled";
-
-const StyledTask = styled.div`
+.task{
   .task-card {
     position: relative;
     display: flex;
@@ -78,6 +76,4 @@ const StyledTask = styled.div`
       top: 0px;
     }
   }
-`;
-
-export default StyledTask;
+}
